@@ -1,5 +1,19 @@
 import logo from "../../assets/logo.png";
+import { loginUser } from "../../features/auth/authActions";
+import { useAppDispatch } from "../../store/hooks";
+import { InputLabel } from "../../UI/molecules";
+
 export const Login = () => {
+    const dispatch = useAppDispatch();
+
+    const handleSubmit = async (e: any) => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        console.log(email, password);
+        dispatch(loginUser({ email, password, remember: true }));
+    };
+
     return (
         <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -15,45 +29,27 @@ export const Login = () => {
 
             <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
                 <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-                    <form className="space-y-6" action="#" method="POST">
-                        <div>
-                            <label
-                                htmlFor="email"
-                                className="block text-sm font-medium text-gray-700"
-                            >
-                                Email address
-                            </label>
-                            <div className="mt-1">
-                                <input
-                                    id="email"
-                                    name="email"
-                                    type="email"
-                                    autoComplete="email"
-                                    required
-                                    className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-secondary-1000 focus:outline-none focus:ring-secondary-1000 sm:text-sm"
-                                />
-                            </div>
-                        </div>
-
-                        <div>
-                            <label
-                                htmlFor="password"
-                                className="block text-sm font-medium text-gray-700"
-                            >
-                                Password
-                            </label>
-                            <div className="mt-1">
-                                <input
-                                    id="password"
-                                    name="password"
-                                    type="password"
-                                    autoComplete="current-password"
-                                    required
-                                    className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-secondary-1000 focus:outline-none focus:ring-secondary-1000 sm:text-sm"
-                                />
-                            </div>
-                        </div>
-
+                    <form
+                        className="space-y-6"
+                        onSubmit={handleSubmit}
+                        method="POST"
+                    >
+                        <InputLabel
+                            label="Email address"
+                            id="email"
+                            name="email"
+                            type="email"
+                            autoComplete="email"
+                            required
+                        />
+                        <InputLabel
+                            label="Password"
+                            id="password"
+                            name="password"
+                            type="password"
+                            autoComplete="current-password"
+                            required
+                        />
                         <div className="flex items-center justify-between">
                             <div className="flex items-center">
                                 <input
@@ -72,7 +68,7 @@ export const Login = () => {
 
                             <div className="text-sm">
                                 <a
-                                    href="#"
+                                    href="/"
                                     className="font-medium text-brown-1000 hover:text-brown-1100"
                                 >
                                     Forgot your password?
@@ -83,7 +79,7 @@ export const Login = () => {
                         <div>
                             <button
                                 type="submit"
-                                className="flex w-full justify-center rounded-md border border-transparent bg-secondary-1000 py-2 px-4 text-sm font-medium text-brown-1000 shadow-sm hover:bg-secondary-1100 focus:outline-none focus:ring-2 focus:ring-secondary-1100 focus:ring-offset-2"
+                                className="flex w-full justify-center rounded-md border border-transparent bg-grayBrown-1000 py-2 px-4 text-sm font-medium text-brown-1000 shadow-sm hover:bg-grayBrown-1100 focus:outline-none focus:ring-2 focus:ring-grayBrown-1100 focus:ring-offset-2"
                             >
                                 Sign in
                             </button>
