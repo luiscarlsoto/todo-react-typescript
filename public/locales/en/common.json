@@ -1,0 +1,17 @@
+{
+    "auth": {
+        "signin": {
+            "invalidCredentials": "Invalid credentials"
+        },
+        "page": {
+            "title": "Sign in to your account",
+            "forgotPassword": "Forgot your password?",
+            "signin": "Sign in",
+            "signup": "Sign up",
+            "rememberMe": "Remember me",
+            "email": "Email",
+            "password": "Password",
+            "newHere": "New here?"
+        }
+    }
+}

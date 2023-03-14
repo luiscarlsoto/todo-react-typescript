@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { loginUser } from './authActions'
-// import { loginUser } from './authActions'
 
 interface IAuthState {
   loading: boolean
@@ -46,9 +45,8 @@ export const counterSlice = createSlice({
         state.token = payload.token
         localStorage.setItem('@token', payload.token)
       })
-      .addCase(loginUser.rejected, (state, { payload }) => {
+      .addCase(loginUser.rejected, (state) => {
         state.loading = false
-        state.error = String(payload)
       })
   },
 })
