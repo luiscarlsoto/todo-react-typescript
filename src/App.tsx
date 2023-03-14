@@ -17,9 +17,8 @@ const ValidateRoute = ({
     element: Element,
 }: IValidateRoute) => {
     const isLogged = useAppSelector(getToken);
-    console.log({ isLogged });
     const location = useLocation();
-    console.log(Boolean(isLogged));
+
     if (authRequired) {
         if (!isLogged) {
             return <Navigate to={to} state={{ from: { location } }} replace />;

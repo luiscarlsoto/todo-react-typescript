@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import logo from "../../assets/logo.png";
 import { loginUser } from "../../features/auth/authActions";
 import { useAppDispatch } from "../../store/hooks";
@@ -5,12 +6,11 @@ import { InputLabel } from "../../UI/molecules";
 
 export const Login = () => {
     const dispatch = useAppDispatch();
-
+    const { t } = useTranslation();
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(email, password);
         dispatch(loginUser({ email, password, remember: true }));
     };
 
@@ -23,7 +23,7 @@ export const Login = () => {
                     alt="Your Company"
                 />
                 <h2 className="mt-2 text-center text-3xl font-bold tracking-tight text-brown-1000">
-                    Sign in to your account
+                    {t("auth.page.title")}
                 </h2>
             </div>
 
@@ -35,7 +35,7 @@ export const Login = () => {
                         method="POST"
                     >
                         <InputLabel
-                            label="Email address"
+                            label={t("auth.page.email") as string}
                             id="email"
                             name="email"
                             type="email"
@@ -43,7 +43,7 @@ export const Login = () => {
                             required
                         />
                         <InputLabel
-                            label="Password"
+                            label={t("auth.page.password") as string}
                             id="password"
                             name="password"
                             type="password"
@@ -62,7 +62,7 @@ export const Login = () => {
                                     htmlFor="remember-me"
                                     className="ml-2 block text-sm text-gray-900"
                                 >
-                                    Remember me
+                                    {t("auth.page.rememberMe")}
                                 </label>
                             </div>
 
@@ -71,7 +71,7 @@ export const Login = () => {
                                     href="/"
                                     className="font-medium text-brown-1000 hover:text-brown-1100"
                                 >
-                                    Forgot your password?
+                                    {t("auth.page.forgotPassword")}
                                 </a>
                             </div>
                         </div>
@@ -81,7 +81,7 @@ export const Login = () => {
                                 type="submit"
                                 className="flex w-full justify-center rounded-md border border-transparent bg-grayBrown-1000 py-2 px-4 text-sm font-medium text-brown-1000 shadow-sm hover:bg-grayBrown-1100 focus:outline-none focus:ring-2 focus:ring-grayBrown-1100 focus:ring-offset-2"
                             >
-                                Sign in
+                                {t("auth.page.signin")}
                             </button>
                         </div>
                     </form>
@@ -93,7 +93,7 @@ export const Login = () => {
                             </div>
                             <div className="relative flex justify-center text-sm">
                                 <span className="bg-white px-2 text-gray-500">
-                                    New here?
+                                    {t("auth.page.newHere")}
                                 </span>
                             </div>
                         </div>
@@ -104,7 +104,7 @@ export const Login = () => {
                                     type="submit"
                                     className="flex w-full justify-center rounded-md border bg-white py-2 px-4 text-sm font-medium text-brown-1000 shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2"
                                 >
-                                    Sign up
+                                    {t("auth.page.signup")}
                                 </button>
                             </div>
                         </div>
