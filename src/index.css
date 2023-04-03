@@ -10,11 +10,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
-  background-color: #f1ead9;
 }
 
 #root {
-  background-color: #f1ead9;
   display: flex;
   flex-direction: column;
   height: 100%;
