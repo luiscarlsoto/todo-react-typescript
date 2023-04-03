@@ -1,7 +1,8 @@
 {
     "auth": {
         "signin": {
-            "invalidCredentials": "Invalid credentials"
+            "invalidCredentials": "Invalid credentials",
+            "success": "You have successfully signed in"
         },
         "page": {
             "title": "Sign in to your account",

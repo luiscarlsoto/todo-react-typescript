@@ -1,7 +1,8 @@
 {
     "auth": {
         "signin": {
-            "invalidCredentials": "Credenciales inválidas"
+            "invalidCredentials": "Credenciales inválidas",
+            "success": "Has iniciado sesión exitosamente"
         },
         "page": {
             "title": "Inicia sesión en tu cuenta",
