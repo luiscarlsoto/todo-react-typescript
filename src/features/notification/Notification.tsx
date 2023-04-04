@@ -7,9 +7,9 @@ export const Notification = () => {
 
 export const notificationAsyncMessage = {
     loading: "common.loading",
-    success: (data: any) => (
-        <Trans>{data?.response?.data?.status?.key ?? "Success"}</Trans>
-    ),
+    success: (data: any) => {
+        return <Trans>{data?.status.key ?? "Success"}</Trans>;
+    },
     error: (error: any) => (
         <Trans>{error?.response?.data?.status?.key ?? "Error"}</Trans>
     ),
