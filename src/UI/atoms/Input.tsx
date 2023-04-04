@@ -1,22 +1,22 @@
 import React from "react";
 import { classNames } from "../../helper/styles.helper";
 
-export interface TInputProps
-    extends React.InputHTMLAttributes<HTMLInputElement> {
+export type TInputProps<C extends React.ElementType> = {
     className?: string;
-    as?: React.ElementType;
+    as?: C;
     errors?: { [key: string]: string };
     name?: string;
-}
+} & React.ComponentPropsWithoutRef<C>;
 
-const Input: React.FC<TInputProps> = ({
-    as: Component = "input",
+const Input = <C extends React.ElementType = "input">({
+    as,
     className = "",
     errors = {},
     name = "",
     disabled,
     ...props
-}) => {
+}: TInputProps<C>) => {
+    const Component = as || "input";
     return (
         <Component
             name={name}
