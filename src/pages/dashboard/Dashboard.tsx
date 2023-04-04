@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "react-day-picker/dist/style.css";
 import { Button, Input, Label } from "../../UI/atoms";
 import { ChevronRightIcon, PlusSmallIcon } from "@heroicons/react/24/outline";
 import { classNames } from "../../helper/styles.helper";
