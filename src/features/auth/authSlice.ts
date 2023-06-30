@@ -9,13 +9,13 @@ interface IAuthState {
   success: boolean
 }
 
-const token = localStorage.getItem('@token')
+export const token = localStorage.getItem('@token')
 
 const initialState:IAuthState = {
     loading: false,
     error: null,
     user: {},
-    token: token,
+    token,
     success: false,
 }
 
