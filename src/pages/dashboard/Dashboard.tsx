@@ -1,105 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Input, Label } from "../../UI/atoms";
 import { ChevronRightIcon, PlusSmallIcon } from "@heroicons/react/24/outline";
 import { classNames } from "../../helper/styles.helper";
 import { Side } from "../../UI/organisms";
-const tasks = [
-    {
-        id: 1,
-        title: "Task 1",
-        description: "Description 1",
-        date: new Date(),
-        completed: false,
-    },
-    {
-        id: 2,
-        title: "Task 2",
-        description: "Description 2",
-        date: new Date(),
-        completed: false,
-    },
-    {
-        id: 3,
-        title: "Task 3",
-        description: "Description 3",
-        date: new Date(),
-        completed: false,
-    },
-    {
-        id: 4,
-        title: "Task 4",
-        description: "Description 4",
-        date: new Date(),
-        completed: false,
-    },
-    {
-        id: 5,
-        title: "Task 5",
-        description: "Description 5",
-        date: new Date(),
-        completed: false,
-    },
-    {
-        id: 6,
-        title: "Task 6",
-        description: "Description 6",
-        date: new Date(),
-        completed: false,
-    },
-    {
-        id: 7,
-        title: "Task 7",
-        description: "Description 7",
-        date: new Date(),
-        completed: false,
-    },
-    {
-        id: 8,
-        title: "Task 8",
-        description: "Description 8",
-        date: new Date(),
-        completed: false,
-    },
-    {
-        id: 9,
-        title: "Task 9",
-        description: "Description 9",
-        date: new Date(),
-        completed: false,
-    },
-    {
-        id: 10,
-        title: "Task 10",
-        description: "Description 10",
-        date: new Date(),
-        completed: false,
-    },
-    {
-        id: 11,
-        title: "Task 11",
-        description: "Description 11",
-        date: new Date(),
-        completed: false,
-    },
-    {
-        id: 12,
-        title: "Task 12",
-        description: "Description 12",
-        date: new Date(),
-        completed: false,
-    },
-    {
-        id: 13,
-        title: "Task 13",
-        description: "Description 13",
-        date: new Date(),
-        completed: false,
-    },
-];
+import { getAllTasks } from "../../features/task/taskActions";
+import { useAppDispatch } from "../../store/hooks";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 export const Dashboard = () => {
     const [open, setOpen] = useState<boolean>(false);
 
+    const dispatch = useAppDispatch();
+
+    const { tasks, loading } = useSelector((state: RootState) => state.tasks);
+
+    useEffect(() => {
+        if (loading) return;
+        if (tasks.length) return;
+        dispatch(getAllTasks());
+        console.log("sucede");
+    }, []);
+    console.log(tasks);
     return (
         <div className="grid grid-cols-12 w-full h-full gap-4">
             <div className={classNames(open ? "col-span-7" : "col-span-12")}>
@@ -158,7 +80,6 @@ export const Dashboard = () => {
 interface IITemList {
     title: string;
     description: string;
-    completed: boolean;
 }
 
 const ItemList = ({ title }: IITemList) => {
