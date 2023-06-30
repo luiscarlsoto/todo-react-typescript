@@ -11,7 +11,7 @@ interface LoginData {
 
 
 const login = async (user: LoginData) => {
-    const response = await fetchApi({ method: 'post', route: 'auth', path: 'signin', data: user })
+    const response = await fetchApi({ method: 'post', route: 'auth', path: 'signin', data: user, withToken: false })
     return response.data;
 }
 
